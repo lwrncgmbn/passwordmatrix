@@ -19,7 +19,7 @@
   <main class="-mt-16 flex flex-col lg:flex-row items-center min-h-screen justify-center ">
     <!-- IMAGE -->
     <div class=" md:block">
-      <img src="/src/assets/image/image.png" alt="" class="transform -scale-x-100">
+      <img src="/src/views/assets/image/image.png" alt="" class="transform -scale-x-100">
     </div>
     <!-- FORM -->
     <div>
