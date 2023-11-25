@@ -30,6 +30,9 @@
           <input type="password" name="password" id="password" placeholder="Password" class="py-1  outline-none pl-4 w-11/12 bg-transparent">
           <i class="fa-solid fa-eye absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-[#00000050]" id="showPass"></i>
         </div>
+        <?php if (isset($errors['account'])) : ?>
+          <p class="text-red-500 text-cs mt-2 text-center"><?= $errors['account'] ?></p>
+        <?php endif; ?>
         <div class="flex justify-center">
           <input type="submit" value="STORE" class="bg-[#93DEFF] w-40 my-2 py-1 text-lg font-bold rounded-md cursor-pointer hover:bg-transparent border-[#93DEFF] border-2 duration-300">
         </div>

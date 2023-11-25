@@ -21,23 +21,27 @@ if (!empty($errors)) {
 $db = App::resolve(Database::class);
 
 // CHECK IF THE EMAIL ALREADY EXIST
-// $user = $db->query('SELECT * FROM accounts where username = :username', [
-//     'username' => $username
-// ])->find();
+$user = $db->query('SELECT * FROM accounts where username = :username and password = :password', [
+    'username' => $username,
+    'password' => $password
+])->find();
 
-// // IF YES, REDIRECT TO LOGIN
-// if ($user) {
-//     header('location: /accounts');
-//     exit();
-// } else {
-//     // ELSE, SAVE IT TO DATABASE
-//     $db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`) VALUES ('$username', '$password', '$hashedPass')");
+// IF YES, REDIRECT TO LOGIN
+if ($user) {
+    // dd("Its already registered");
+    $errors['account'] = "This account is already registered!";
+    // header('location: /');
+    return require "src/views/index.view.php";
+    exit();
+} else {
+    // ELSE, SAVE IT TO DATABASE
+    $db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`) VALUES ('$username', '$password', '$hashedPass')");
 
-//     header('location: /accounts');
-//     exit();
-// }
+    header('location: /accounts');
+    exit();
+}
 
-$db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`) VALUES ('$username', '$password', '$hashedPass')");
+// $db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`) VALUES ('$username', '$password', '$hashedPass')");
 
-header('location: /accounts');
-exit();
+// header('location: /accounts');
+// exit();
