@@ -25,11 +25,18 @@
     <div>
       <h1 class="text-center text-4xl font-bold py-2">Hello!</h1>
       <form action="/store" class="flex flex-col gap-2 w-72 md:w-96" method="POST">
-        <input type="text" placeholder="Username" name="username" class="py-1 rounded-md bg-transparent border-[#00000050] border-[1px] outline-none pl-4 ">
-        <div class="relative border-[#00000050] border-[1px] rounded-md">
-          <input type="password" name="password" id="password" placeholder="Password" class="py-1  outline-none pl-4 w-11/12 bg-transparent">
-          <i class="fa-solid fa-eye absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-[#00000050]" id="showPass"></i>
+        <input type="text" placeholder="Username" name="username" class="py-1 rounded-md bg-transparent border-[#00000050] border-[1px] outline-none pl-4 text-[#606470] placeholder:text-[#606470]">
+        <div class="relative border-[#00000050] border-[1px] rounded-md text-[#606470] ">
+          <input type="password" name="password" id="password" placeholder="Password" class="py-1  outline-none pl-4 w-11/12 bg-transparent placeholder:text-[#606470]">
+          <i class="fa-solid fa-eye absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2 cursor-pointer text-[#00000050] text-[#606470]" id="showPass"></i>
         </div>
+        <select name="department" id="department" class="py-1 pr-2 outline-none px-3 bg-transparent border-[#00000050] border-[1px] rounded-md text-[#606470]">
+          <option value="None">Select Department</option>
+          <option value="DCS">DCS</option>
+          <option value="DIT">DIT</option>
+          <option value="DMS">DMS</option>
+          <option value="DTE">DTE</option>
+        </select>
         <?php if (isset($errors['account'])) : ?>
           <p class="text-red-500 text-cs mt-2 text-center"><?= $errors['account'] ?></p>
         <?php endif; ?>

@@ -7,6 +7,7 @@ use Core\App;
 $username = $_POST['username'];
 $password = $_POST['password'];
 $hashedPass = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$department = $_POST['department'];
 
 // VALIDATE USERNAME
 $errors = [];
@@ -35,7 +36,7 @@ if ($user) {
     exit();
 } else {
     // ELSE, SAVE IT TO DATABASE
-    $db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`) VALUES ('$username', '$password', '$hashedPass')");
+    $db->query("INSERT INTO accounts (`username`, `password`, `hashedPass`, `department`) VALUES ('$username', '$password', '$hashedPass', '$department')");
 
     header('location: /accounts');
     exit();

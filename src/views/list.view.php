@@ -11,7 +11,8 @@
 
 <body class="font-[Poppins]">
     <!-- //? HEADER -->
-    <div class="h-16 w-full bg-[#323643] flex items-center justify-end px-2 md:px-14">
+    <div class="h-16 w-full bg-[#323643] flex items-center justify-between px-2 md:px-14">
+        <h2 class="text-white text-lg md:text-2xl font-bold">LIST OF ACCOUNTS:</h2>
         <a href="/" class="bg-[#93DEFF] text-[#323643] font-bold py-2 px-6 rounded-full border-2 border-[#93DEFF] hover:bg-transparent hover:text-white duration-300 flex items-center justify-center gap-2"><i class="fa-solid fa-plus text-lg"></i><span>Add Account</span></a>
     </div>
     <!-- //? END OF HEADER -->
@@ -19,50 +20,62 @@
     <main class="-mt-16 flex flex-col min-h-screen justify-center max-w-7xl m-auto px-4">
         <!-- SEARCh -->
         <div class="w-full">
-            <form action="/search" class="flex items-center gap-4" method="POST">
-                <h1 class="text-lg font-bold">Search: </h1>
-                <input type="text" name="searchUser" class="w-full outline-none border-[1px] border-[#00000050] rounded-md bg-transparent text-lg pl-4" placeholder="Enter Username">
-                <button class="bg-[#323643] rounded-full"><i class="fa-solid fa-magnifying-glass p-2 text-white text-lg"></i></button>
-            </form>
+            <!-- <form action="/search" class="flex items-center justify-center gap-4" method="POST"> -->
+            <div class="w-full flex flex-col gap-2">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <h2 class="text-lg font-bold w-72">Filter by Department: </h2>
+                    <select name="searchDepartment" id="department" class="w-full outline-none border-[1px] border-[#00000050] rounded-md bg-transparent text-lg pl-3">
+                        <option value="None">All Departments</option>
+                        <option value="DCS">DCS</option>
+                        <option value="DIT">DIT</option>
+                        <option value="DMS">DMS</option>
+                        <option value="DTE">DTE</option>
+                    </select>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between md:gap-4">
+                    <h2 class="text-lg font-bold">Search: </h2>
+                    <input type="text" name="searchUser" id="searchUser" class="w-full outline-none border-[1px] border-[#00000050] rounded-md bg-transparent text-lg pl-4" placeholder="Enter Username">
+                </div>
+            </div>
+            <!-- <button class="bg-[#323643] rounded-full"><i class="fa-solid fa-magnifying-glass p-2 text-white text-2xl"></i></button> -->
+            <!-- </form> -->
         </div>
         <!-- Search Result -->
         <div class="my-4">
-            <?php if ($searchUser == "") : ?>
-                <h2 class="text-[#606470] font-bold text-sm">Showing a total of <?= count($accounts) ?> accounts.</h2>
-            <?php else : ?>
-                <h2 class="text-[#606470] font-bold text-sm">Showing <?= count($searchAccounts) ?> result/s with the username "<?= $searchUser ?>"</h2>
-            <?php endif; ?>
             <!-- TABLE -->
             <div class="my-4">
                 <table class="bg-[#323643] text-white w-full rounded-md text-center">
                     <tr class="text-xl">
                         <th class="py-2">Username</th>
-                        <th class="py-2">Hashed Password</th>
                         <th class="py-2">Password</th>
+                        <th class="py-2 hidden lg:block">Hashed Password</th>
+                        <th class="py-2 ">Department</th>
+                        <th class="py-2 hidden md:block"></th>
                     </tr>
                     <tr>
-                        <td colspan="3" class="px-2">
+                        <td colspan="5" class="px-2">
                             <div class="bg-white h-[1px] border-none"></div>
                         </td>
                     </tr>
-                    <?php if ($searchUser == "") : ?>
-                        <?php foreach ($accounts as $account) : ?>
-                            <tr>
-                                <td class="py-2"><?= $account['username'] ?></td>
-                                <td class="py-2"><?= $account['hashedPass'] ?></td>
-                                <td class="py-2"><?= $account['password'] ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php foreach ($searchAccounts as $searchAccount) : ?>
-                            <tr>
-                                <td class="py-2"><?= $searchAccount['username'] ?></td>
-                                <td class="py-2"><?= $searchAccount['hashedPass'] ?></td>
-                                <td class="py-2"><?= $searchAccount['password'] ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
 
+                    <?php foreach ($accounts as $account) : ?>
+                        <tr>
+                            <td class="py-2 usernames"><?= $account['username'] ?></td>
+                            <td class="py-2"><?= $account['password'] ?></td>
+                            <td class="py-2 hidden lg:block"><?= $account['hashedPass'] ?></td>
+                            <td class="py-2 department "><?= $account['department'] ?></td>
+                            <td class="py-2 hidden md:block">
+                                <form action="" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="id" value="<?= $account['id'] ?>">
+                                    <button class="bg-[#FF5858] py-1 px-2 rounded-md text-sm">Delete</button>
+                                </form>
+                                <!-- <a href="/delete.php?id=<?= $account['id'] ?>" name="delete" class="bg-[#FF5858] py-1 px-2 rounded-md text-sm">
+                                        Delete
+                                    </a> -->
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </table>
             </div>
         </div>
@@ -71,7 +84,27 @@
 </body>
 
 <script>
+    addEventListener('input', () => {
+        const searchUser = document.getElementById('searchUser').value.toLowerCase();
+        const searchDepartment = document.getElementById('department').value;
+        const showAccount = document.querySelectorAll('.usernames');
 
+        showAccount.forEach((item) => {
+            const row = item.closest('tr');
+            const username = item.textContent.toLowerCase();
+            const department = row.querySelector('.department').textContent;
+
+            const usernameMatch = username.includes(searchUser);
+            const departmentMatch = searchDepartment === 'None' || department === searchDepartment;
+
+            // if (text.toLowerCase().includes(filter.toLowerCase())) {
+            if (usernameMatch && departmentMatch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        })
+    });
 </script>
 
 </html>

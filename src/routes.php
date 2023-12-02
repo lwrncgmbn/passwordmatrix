@@ -9,3 +9,6 @@ $router->post('/store', 'src/Http/controllers/store.php');
 
 // SEARCH ACCOUNTS
 $router->post('/search', 'src/Http/controllers/search.php');
+
+// DELETE ACCOUNT
+$router->delete('/accounts', 'src/Http/controllers/delete.php');
