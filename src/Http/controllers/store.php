@@ -12,7 +12,11 @@ $department = $_POST['department'];
 // VALIDATE USERNAME
 $errors = [];
 if (!Validator::string($username, 7, 255)) {
-    $errors['username'] = "Please provide a valid username!";
+    $errors['username'] = "Username must have atleast 7 characters!";
+}
+
+if (!Validator::string($password, 8, 255)) {
+    $errors['password'] = "Password must have atleast 8 characters!";
 }
 
 if (!empty($errors)) {
@@ -22,15 +26,14 @@ if (!empty($errors)) {
 $db = App::resolve(Database::class);
 
 // CHECK IF THE EMAIL ALREADY EXIST
-$user = $db->query('SELECT * FROM accounts where username = :username and password = :password', [
-    'username' => $username,
-    'password' => $password
+$user = $db->query('SELECT * FROM accounts where username = :username', [
+    'username' => $username
 ])->find();
 
 // IF YES, REDIRECT TO LOGIN
 if ($user) {
     // dd("Its already registered");
-    $errors['account'] = "This account is already registered!";
+    $errors['account'] = "This username is already taken!";
     // header('location: /');
     return require "src/views/index.view.php";
     exit();

@@ -37,7 +37,11 @@
           <option value="DMS">DMS</option>
           <option value="DTE">DTE</option>
         </select>
-        <?php if (isset($errors['account'])) : ?>
+        <?php if (isset($errors['username'])) : ?>
+          <p class="text-red-500 text-cs mt-2 text-center"><?= $errors['username'] ?></p>
+        <?php elseif (isset($errors['password'])) : ?>
+          <p class="text-red-500 text-cs mt-2 text-center"><?= $errors['password'] ?></p>
+        <?php elseif (isset($errors['account'])) : ?>
           <p class="text-red-500 text-cs mt-2 text-center"><?= $errors['account'] ?></p>
         <?php endif; ?>
         <div class="flex justify-center">

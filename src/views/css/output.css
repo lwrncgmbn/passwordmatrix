@@ -839,16 +839,6 @@ video {
   line-height: 1.75rem;
 }
 
-.text-xs{
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
-.text-base{
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .font-bold{
   font-weight: 700;
 }
@@ -914,22 +904,6 @@ video {
     display: block;
   }
 
-  .md\:inline-block{
-    display: inline-block;
-  }
-
-  .md\:inline{
-    display: inline;
-  }
-
-  .md\:flex{
-    display: flex;
-  }
-
-  .md\:inline-flex{
-    display: inline-flex;
-  }
-
   .md\:w-96{
     width: 24rem;
   }
@@ -958,27 +932,7 @@ video {
     display: block;
   }
 
-  .lg\:inline-block{
-    display: inline-block;
-  }
-
-  .lg\:inline{
-    display: inline;
-  }
-
-  .lg\:flex{
-    display: flex;
-  }
-
-  .lg\:inline-flex{
-    display: inline-flex;
-  }
-
   .lg\:flex-row{
     flex-direction: row;
-  }
-
-  .lg\:flex-col{
-    flex-direction: column;
   }
 }
