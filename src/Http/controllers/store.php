@@ -55,8 +55,9 @@ if (!empty($errors)) {
 $db = App::resolve(Database::class);
 
 // CHECK IF THE EMAIL ALREADY EXIST
-$user = $db->query('SELECT * FROM accounts where username = :username AND department = :department', [
+$user = $db->query('SELECT * FROM accounts where username = :username AND password = :password AND department = :department', [
     'username' => $username,
+    'password' => $password,
     'department' => $department
 ])->find();
 
