@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 24, 2023 at 01:23 PM
+-- Generation Time: Jan 08, 2024 at 01:07 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,18 +31,21 @@ CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `hashedPass` varchar(255) NOT NULL
+  `hashedPass` varchar(255) NOT NULL,
+  `department` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `username`, `password`, `hashedPass`) VALUES
-(4, 'lawrence', 'lawrence123', '$2y$10$H7z/ZE9F0guejaDvZSJs6uqybntPMoFW6JEfoZGiMicNwmb6Jx2Xa'),
-(5, 'gumabon', 'gumabon123', '$2y$10$tXYqOJGA20Wsn695A9Y8l.tqeJ4gUO.f1Nodj0BRKWyIoef7Mw4GK'),
-(6, 'Patricia', 'Patricia123', '$2y$10$5694didTBRSXbOASH86iH.ghStB99JXLoJesOfqjcIt8Nyifg617G'),
-(7, 'lawrence', 'lawrence456', '$2y$10$ATNILYSYcQIfNIYZ7KMm3.p6XraG3LaSHPXdMIOcmTpIBSNaHf3r.');
+INSERT INTO `accounts` (`id`, `username`, `password`, `hashedPass`, `department`) VALUES
+(5, 'gumabon', 'gumabon123', '$2y$10$tXYqOJGA20Wsn695A9Y8l.tqeJ4gUO.f1Nodj0BRKWyIoef7Mw4GK', 'DTE'),
+(12, 'gumabon', 'lawrence', '$2y$10$oMwKIrNj9lXaYnMDCKqUvO5W3F0XU1zhRiNC9ICNUKtLaRi5qkZDS', 'DMS'),
+(16, 'Patricia', 'Patricia123', '$2y$10$i71si7cDGKpCQYKS.yxPd.6zqMI/Faj5kZuraFgc276FCE7oqhrFG', 'DMS'),
+(17, 'Lawrence', 'Lawrence123', '$2y$10$zq71O5W20uJ/MKZKLyrmnuY492L0xWV0l.n3WmKzK/5tgVSAYAjai', 'DCS'),
+(19, 'Lawrence', 'Lawrence123', 'MDg5ZGE4MDZjY2RjNjVhMTE2MDNiZjE0ODIyMzczZTdkMTBlZTgzMDA4NzdhZjEzYzkzNzhlYWVjZTU4NTJjMw==', 'DTE'),
+(20, 'Gumabon', 'GUmabon123', 'YzJlNTkxNzllNzVmMWYzYjk5NDVkMGM5YzkwYTc3ZWEyNjA3YjVhMzdmZDg1NThlZDEzZTNjOWY0ZTNlZTdkYg==', 'DCS');
 
 --
 -- Indexes for dumped tables
@@ -62,7 +65,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

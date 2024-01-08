@@ -5,9 +5,38 @@ use Core\Database;
 use Core\App;
 
 $username = $_POST['username'];
-$password = $_POST['password'];
-$hashedPass = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $department = $_POST['department'];
+$password = $_POST['password'];
+//! BCRYPT
+// $hashedPass = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+//! SHA512 ENCRYPT
+$key = 'passKey';
+
+// Hash-based Message Authentication Code // 'sha512' can be 'sha256'
+// $base = hash_hmac('sha512', $password, $key); 
+$hash = hash_hmac('sha256', $password, $key);
+
+// Encode the HMAC using Base64
+$hashedPass = base64_encode($hash);
+
+//! DECRYPT
+// $calculatedHash = hash_hmac('sha512', $password, $key);
+// $calculatedBase64 = base64_encode($calculatedHash);
+
+// if ($calculatedBase64 == $hashedPass) {
+//     dd($calculatedBase64);
+// } else {
+
+//     dd($calculatedBase64);
+// }
+
+// $decodeData = base64_decode($hashedPass);
+// $decodedPass = hash('sha512', $decodeData);
+
+// dd($hashedPass . ' . ' . $decodedPass);
+
+
 
 // VALIDATE USERNAME
 $errors = [];
@@ -26,8 +55,9 @@ if (!empty($errors)) {
 $db = App::resolve(Database::class);
 
 // CHECK IF THE EMAIL ALREADY EXIST
-$user = $db->query('SELECT * FROM accounts where username = :username', [
-    'username' => $username
+$user = $db->query('SELECT * FROM accounts where username = :username AND department = :department', [
+    'username' => $username,
+    'department' => $department
 ])->find();
 
 // IF YES, REDIRECT TO LOGIN

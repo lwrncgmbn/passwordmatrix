@@ -17,7 +17,7 @@
     </div>
     <!-- //? END OF HEADER -->
     <!-- //? MAIN  -->
-    <main class="-mt-16 flex flex-col min-h-screen justify-center max-w-7xl m-auto px-4">
+    <main class="-mt-16 flex flex-col min-h-screen justify-center m-auto px-4 lg:px-52">
         <!-- SEARCh -->
         <div class="w-full">
             <!-- <form action="/search" class="flex items-center justify-center gap-4" method="POST"> -->
@@ -43,12 +43,12 @@
         <!-- Search Result -->
         <div class="my-4">
             <!-- TABLE -->
-            <div class="my-4">
-                <table class="bg-[#323643] text-white w-full rounded-md text-center">
+            <div class="my-4 ">
+                <table class="bg-[#323643] text-white w-full rounded-md text-center px-4">
                     <tr class="text-xl">
                         <th class="py-2">Username</th>
                         <th class="py-2">Password</th>
-                        <th class="py-2 hidden lg:block">Hashed Password</th>
+                        <th class="py-2 hidden lg:block">Encrypted Password</th>
                         <th class="py-2 ">Department</th>
                         <th class="py-2 hidden md:block"></th>
                     </tr>
@@ -64,7 +64,7 @@
                             <td class="py-2"><?= $account['password'] ?></td>
                             <td class="py-2 hidden lg:block"><?= $account['hashedPass'] ?></td>
                             <td class="py-2 department "><?= $account['department'] ?></td>
-                            <td class="py-2 hidden md:block">
+                            <td class="py-2 hidden md:block ">
                                 <form action="" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="id" value="<?= $account['id'] ?>">
