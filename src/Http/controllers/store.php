@@ -14,8 +14,8 @@ $password = $_POST['password'];
 $key = 'passKey';
 
 // Hash-based Message Authentication Code // 'sha512' can be 'sha256'
-// $base = hash_hmac('sha512', $password, $key); 
-$hash = hash_hmac('sha256', $password, $key);
+// $base = hash_hmac('sha512', $password, $key); 256
+$hash = hash_hmac('sha224', $password, $key);
 
 // Encode the HMAC using Base64
 $hashedPass = base64_encode($hash);
