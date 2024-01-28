@@ -574,6 +574,10 @@ video {
   position: static;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .absolute{
   position: absolute;
 }
@@ -610,6 +614,10 @@ video {
 
 .mt-2{
   margin-top: 0.5rem;
+}
+
+.mt-16{
+  margin-top: 4rem;
 }
 
 .flex{
@@ -650,6 +658,10 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.max-w-7xl{
+  max-width: 80rem;
 }
 
 .-translate-x-1\/2{
@@ -701,6 +713,10 @@ video {
 
 .gap-4{
   gap: 1rem;
+}
+
+.overflow-x-scroll{
+  overflow-x: scroll;
 }
 
 .rounded-full{
@@ -790,6 +806,11 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .pl-3{
   padding-left: 0.75rem;
 }
@@ -800,6 +821,10 @@ video {
 
 .pr-2{
   padding-right: 0.5rem;
+}
+
+.pr-4{
+  padding-right: 1rem;
 }
 
 .text-center{
@@ -896,6 +921,15 @@ video {
 }
 
 @media (min-width: 768px){
+  .md\:my-4{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .md\:mt-0{
+    margin-top: 0px;
+  }
+
   .md\:block{
     display: block;
   }

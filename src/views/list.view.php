@@ -11,13 +11,13 @@
 
 <body class="font-[Poppins]">
     <!-- //? HEADER -->
-    <div class="h-16 w-full bg-[#323643] flex items-center justify-between px-2 md:px-14">
+    <div class="h-16 w-full bg-[#323643] flex items-center justify-between px-2 md:px-14 fixed">
         <h2 class="text-white text-lg md:text-2xl font-bold">LIST OF ACCOUNTS:</h2>
         <a href="/" class="bg-[#93DEFF] text-[#323643] font-bold py-2 px-6 rounded-full border-2 border-[#93DEFF] hover:bg-transparent hover:text-white duration-300 flex items-center justify-center gap-2"><i class="fa-solid fa-plus text-lg"></i><span>Add Account</span></a>
     </div>
     <!-- //? END OF HEADER -->
     <!-- //? MAIN  -->
-    <main class="-mt-16 flex flex-col min-h-screen justify-center m-auto px-4 lg:px-52">
+    <main class=" flex flex-col min-h-screen justify-center m-auto px-4 max-w-7xl">
         <!-- SEARCh -->
         <div class="w-full">
             <!-- <form action="/search" class="flex items-center justify-center gap-4" method="POST"> -->
@@ -43,14 +43,14 @@
         <!-- Search Result -->
         <div class="my-4">
             <!-- TABLE -->
-            <div class="my-4 ">
+            <div class="my-4 overflow-x-scroll">
                 <table class="bg-[#323643] text-white w-full rounded-md text-center px-4">
                     <tr class="text-xl">
-                        <th class="py-2">Username</th>
+                        <th class="py-2 pl-4">Username</th>
                         <th class="py-2">Password</th>
-                        <th class="py-2 hidden lg:block">Encrypted Password</th>
+                        <th class="py-2 ">Encrypted Password</th>
                         <th class="py-2 ">Department</th>
-                        <th class="py-2 hidden md:block"></th>
+                        <th class="py-2 "></th>
                     </tr>
                     <tr>
                         <td colspan="5" class="px-2">
@@ -59,12 +59,21 @@
                     </tr>
 
                     <?php foreach ($accounts as $account) : ?>
-                        <tr>
-                            <td class="py-2 usernames"><?= $account['username'] ?></td>
+                        <tr class="">
+                            <td class="py-2 usernames pl-4"><?= $account['username'] ?></td>
                             <td class="py-2"><?= $account['password'] ?></td>
-                            <td class="py-2 hidden lg:block"><?= $account['hashedPass'] ?></td>
+                            <td class="py-2 ">
+                                <?php
+                                if (strlen($account['hashedPass']) > 20) {
+                                    echo substr($account['hashedPass'], 0, 30) . "...";
+                                } else {
+
+                                    echo $account['hashedPass'];
+                                }
+                                ?>
+                            </td>
                             <td class="py-2 department "><?= $account['department'] ?></td>
-                            <td class="py-2 hidden md:block ">
+                            <td class="py-2  pr-4">
                                 <form action="" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="id" value="<?= $account['id'] ?>">

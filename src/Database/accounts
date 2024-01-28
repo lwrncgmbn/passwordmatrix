@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jan 14, 2024 at 01:40 PM
+-- Generation Time: Jan 28, 2024 at 01:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,7 +47,12 @@ INSERT INTO `accounts` (`id`, `username`, `password`, `hashedPass`, `department`
 (19, 'Lawrence', 'Lawrence123', 'MDg5ZGE4MDZjY2RjNjVhMTE2MDNiZjE0ODIyMzczZTdkMTBlZTgzMDA4NzdhZjEzYzkzNzhlYWVjZTU4NTJjMw==', 'DTE'),
 (20, 'Gumabon', 'GUmabon123', 'YzJlNTkxNzllNzVmMWYzYjk5NDVkMGM5YzkwYTc3ZWEyNjA3YjVhMzdmZDg1NThlZDEzZTNjOWY0ZTNlZTdkYg==', 'DCS'),
 (22, 'Lawrence', 'Lawrence123', 'MDg5ZGE4MDZjY2RjNjVhMTE2MDNiZjE0ODIyMzczZTdkMTBlZTgzMDA4NzdhZjEzYzkzNzhlYWVjZTU4NTJjMw==', 'DIT'),
-(23, 'Deluz123', 'Deluz123', 'NWZiODliM2E4OTVhZjUxZDdlYTVkYmNhYjNiYTkwYmU2M2I4MWE3NGI4ZjMwZTJhZTE3MTVhMTE=', 'DCS');
+(23, 'Deluz123', 'Deluz123', 'NWZiODliM2E4OTVhZjUxZDdlYTVkYmNhYjNiYTkwYmU2M2I4MWE3NGI4ZjMwZTJhZTE3MTVhMTE=', 'DCS'),
+(24, 'patriciaaa', '123123123', 'ZTdkM2Y0MWQ3ZGY1NDI0ZGZhYzg3ODY5NWY0YjI2ZTQ2YWRhYzFjMTYxMGFhYzlhNTM1NTZmNTM=', 'None'),
+(25, 'lawrencelawrence', 'lawrence', 'NDM3YzhmZGIxNjk5M2VjMGNlYWVkMjhkMzE0Zjc3ZGIwMWI3NjI5YjJhMjgyMDgyMjEwNjI1ZmY=', 'DCS'),
+(26, 'Juan123123', 'DelaCruz', 'ODM5MjM0YjY2YTI0OGI3MjkwNzY3MjA3NjVjMThjZmI3YjQ0YWRiYWZkNmFjMDI3YWNkNzM5ZDI=', 'None'),
+(27, 'DelaCruz', 'Juan123123', 'YTFmMmE3MWM4NjY0Zjc4ZTFlOGM2Mjk2NmZlMmI0OTk2OWNiZmUxZmM1YTU3M2RmODBiNDdmMGI=', 'DCS'),
+(28, 'Pedro123', 'Pedro123', 'OGZkZTEyMDA2MjRiZTI0YjgxODM1ODk2YmFkYzkxMTgwZGNiYjdhYTVkNGJmNWY3ODBhOWJhYTY=', 'DIT');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +72,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

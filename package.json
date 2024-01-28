@@ -4,6 +4,6 @@
   },
   "scripts": {
     "build": "npx tailwindcss -i src/views/css/input.css -o src/views/css/output.css --watch",
-    "host": "php -S localhost:3000"
+    "dev": "php -S localhost:3000"
   }
 }
