@@ -6,7 +6,11 @@
 
 > To run it in localhost
 
-- `npm run host `
+- `Clone the repository and change/configure the config.php`
+
+> To run it in localhost
+
+- `npm run dev `
 
 > To load tailwindcss
 
