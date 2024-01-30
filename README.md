@@ -4,8 +4,6 @@
 
 ### Quick Start
 
-> To run it in localhost
-
 - `Clone the repository and change/configure the config.php`
 
 > To run it in localhost
